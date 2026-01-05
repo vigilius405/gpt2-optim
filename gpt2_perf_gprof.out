@@ -1,0 +1,210 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 97.18     13.45    13.45     3010     0.00     0.00  linear
+  1.37     13.64     0.19       61     0.00     0.00  initialize_linear_layer
+  0.79     13.75     0.11        1     0.11     0.30  initialize_weights
+  0.29     13.79     0.04                             _init
+  0.14     13.81     0.02      600     0.00     0.00  gelu
+  0.14     13.83     0.02      240     0.00     0.00  norm
+  0.07     13.84     0.01     1440     0.00     0.00  scaled_dot_product_attention
+  0.00     13.84     0.00      240     0.00     0.00  matrix_add
+  0.00     13.84     0.00      120     0.00     0.11  block
+  0.00     13.84     0.00       61     0.00     0.00  free_linear_layer
+  0.00     13.84     0.00       10     0.00     1.35  model
+  0.00     13.84     0.00       10     0.00     0.00  positions_for
+  0.00     13.84     0.00        1     0.00     0.00  free_weights
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2024 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 4 byte(s) for 0.07% of 13.84 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     99.7    0.00   13.80                 main [1]
+                0.00   13.50      10/10          model [2]
+                0.11    0.19       1/1           initialize_weights [5]
+                0.00    0.00       1/1           free_weights [14]
+-----------------------------------------------
+                0.00   13.50      10/10          main [1]
+[2]     97.5    0.00   13.50      10         model [2]
+                0.00   13.46     120/120         block [3]
+                0.04    0.00      10/3010        linear [4]
+                0.00    0.00      10/10          positions_for [13]
+-----------------------------------------------
+                0.00   13.46     120/120         model [2]
+[3]     97.2    0.00   13.46     120         block [3]
+               13.41    0.00    3000/3010        linear [4]
+                0.02    0.00     600/600         gelu [8]
+                0.02    0.00     240/240         norm [9]
+                0.01    0.00    1440/1440        scaled_dot_product_attention [10]
+                0.00    0.00     240/240         matrix_add [11]
+-----------------------------------------------
+                0.04    0.00      10/3010        model [2]
+               13.41    0.00    3000/3010        block [3]
+[4]     97.2   13.45    0.00    3010         linear [4]
+-----------------------------------------------
+                0.11    0.19       1/1           main [1]
+[5]      2.2    0.11    0.19       1         initialize_weights [5]
+                0.19    0.00      61/61          initialize_linear_layer [6]
+-----------------------------------------------
+                0.19    0.00      61/61          initialize_weights [5]
+[6]      1.4    0.19    0.00      61         initialize_linear_layer [6]
+-----------------------------------------------
+                                                 <spontaneous>
+[7]      0.3    0.04    0.00                 _init [7]
+-----------------------------------------------
+                0.02    0.00     600/600         block [3]
+[8]      0.1    0.02    0.00     600         gelu [8]
+-----------------------------------------------
+                0.02    0.00     240/240         block [3]
+[9]      0.1    0.02    0.00     240         norm [9]
+-----------------------------------------------
+                0.01    0.00    1440/1440        block [3]
+[10]     0.1    0.01    0.00    1440         scaled_dot_product_attention [10]
+-----------------------------------------------
+                0.00    0.00     240/240         block [3]
+[11]     0.0    0.00    0.00     240         matrix_add [11]
+-----------------------------------------------
+                0.00    0.00      61/61          free_weights [14]
+[12]     0.0    0.00    0.00      61         free_linear_layer [12]
+-----------------------------------------------
+                0.00    0.00      10/10          model [2]
+[13]     0.0    0.00    0.00      10         positions_for [13]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[14]     0.0    0.00    0.00       1         free_weights [14]
+                0.00    0.00      61/61          free_linear_layer [12]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2024 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+   [7] _init                   [6] initialize_linear_layer [9] norm
+   [3] block                   [5] initialize_weights     [13] positions_for
+  [12] free_linear_layer       [4] linear                 [10] scaled_dot_product_attention
+  [14] free_weights           [11] matrix_add
+   [8] gelu                    [2] model
